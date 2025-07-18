@@ -1,6 +1,6 @@
 package com.aluraCourse.literAlura;
 
-import com.aluraCourse.literAlura.client.GutenbergClient;
+import com.aluraCourse.literAlura.client.GutendexClient;
 import com.aluraCourse.literAlura.console.Principal;
 import com.aluraCourse.literAlura.service.AuthorService;
 import com.aluraCourse.literAlura.service.BookService;
@@ -16,13 +16,13 @@ public class LiterAluraApplication implements CommandLineRunner {
     private final BookService bookService;
     private final AuthorService authorService;
     private final StatisticsService statisticsService;
-    private final GutenbergClient gutembergClient;
+    private final GutendexClient gutembergClient;
     private final DataConverter dataConverter;
 
     public LiterAluraApplication(BookService bookService,
                                  AuthorService authorService,
                                  StatisticsService statisticsService,
-                                 GutenbergClient gutembergClient,
+                                 GutendexClient gutembergClient,
                                  DataConverter dataConverter) {
         this.bookService = bookService;
         this.authorService = authorService;
