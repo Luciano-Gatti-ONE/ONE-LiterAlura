@@ -3,7 +3,7 @@ package com.aluraCourse.literAlura.console;
 import com.aluraCourse.literAlura.model.Data;
 import com.aluraCourse.literAlura.model.DataBook;
 import com.aluraCourse.literAlura.util.DataConverter;
-import com.aluraCourse.literAlura.client.GutenbergClient;
+import com.aluraCourse.literAlura.client.GutendexClient;
 import com.aluraCourse.literAlura.service.AuthorService;
 import com.aluraCourse.literAlura.service.BookService;
 import com.aluraCourse.literAlura.service.StatisticsService;
@@ -16,7 +16,7 @@ import java.util.Scanner;
 * desde una API o base de datos.
 *
 * Utiliza servicios como {@link BookService}, {@link AuthorService}, {@link StatisticsService},
-* {@link GutenbergClient} y {@link DataConverter} para realizar las operaciones.
+* {@link GutendexClient} y {@link DataConverter} para realizar las operaciones.
 *
 * @author Luciano E. Gatti Flekenstein
 */
@@ -26,7 +26,7 @@ public class Principal {
     private final BookService bookService;
     private final AuthorService authorService;
     private final StatisticsService statisticsService;
-    private final GutenbergClient gutembergClient;
+    private final GutendexClient gutembergClient;
     private final DataConverter dataConverter;
 
     private final Scanner scanner = new Scanner(System.in);
@@ -35,7 +35,7 @@ public class Principal {
     public Principal(BookService bookService,
                      AuthorService authorService,
                      StatisticsService statisticsService,
-                     GutenbergClient gutembergClient,
+                     GutendexClient gutembergClient,
                      DataConverter dataConverter) {
         this.bookService = bookService;
         this.authorService = authorService;
