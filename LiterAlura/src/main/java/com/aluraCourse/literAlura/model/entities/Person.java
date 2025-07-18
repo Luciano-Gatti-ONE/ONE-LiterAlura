@@ -1,61 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.aluraCourse.literAlura.model.entities;
 
-import com.aluraCourse.literAlura.model.DataPerson;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import java.time.format.DateTimeParseException;
-import java.util.List;
+import jakarta.persistence.MappedSuperclass;
 
 /**
- *
- * @author usuario
- */
-@Entity
-@Table(name = "person")
-public class Person {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+* Clase base abstracta que representa a una persona con atributos comunes
+* como nombre, año de nacimiento y año de fallecimiento.
+*
+* Esta clase está anotada con {@link jakarta.persistence.MappedSuperclass}
+* para que sus atributos sean heredados y mapeados en las entidades hijas,
+* sin crear una tabla propia en la base de datos.
+* 
+* Sirve como superclase para entidades como {@link Author}.
+* 
+* @author Luciano E. Gatti Flekenstein
+*/
+
+@MappedSuperclass
+public abstract class Person {
     private String name;
     private Integer birthYear;
     private Integer deathYear;
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Book> books;
 
-    public Person(){}
+    public Person() {}
 
-    public Person(DataPerson dataPerson) {
-        this.name = dataPerson.name();
-        try{
-            this.birthYear = Integer.valueOf(dataPerson.birthYear());
-        } catch (DateTimeParseException e){
-            this.birthYear = null;
-        }
-        try{
-            this.deathYear = Integer.valueOf(dataPerson.deathYear());
-        } catch (DateTimeParseException e){
-            this.deathYear = null;
-        }
-    }
-    
-    public Long getId() {
-        return Id;
-    }
-    
-    public void setId(Long Id) {
-        this.Id = Id;
+    public Person(String name, Integer birthYear, Integer deathYear) {
+        this.name = name;
+        this.birthYear = birthYear;
+        this.deathYear = deathYear;
     }
 
+    // Getters y setters
     public String getName() {
         return name;
     }
@@ -78,22 +52,5 @@ public class Person {
 
     public void setDeathYear(Integer deathYear) {
         this.deathYear = deathYear;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        books.forEach(e -> e.setAuthor(this));
-        this.books = books;
-    }
-    
-    @Override
-    public String toString() {
-        return "\n" + "Autor:" + "\n" +
-                "Name='" + name + "\n" +
-                "Nacimiento=" + birthYear + "\n" +
-                "Fallecimiento=" + deathYear;
     }
 }
