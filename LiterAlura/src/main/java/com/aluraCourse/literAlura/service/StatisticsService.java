@@ -1,6 +1,6 @@
 package com.aluraCourse.literAlura.service;
 
-import com.aluraCourse.literAlura.client.GutenbergClient;
+import com.aluraCourse.literAlura.client.GutendexClient;
 import com.aluraCourse.literAlura.model.Data;
 import com.aluraCourse.literAlura.model.DataBook;
 import com.aluraCourse.literAlura.model.entities.Book;
@@ -29,7 +29,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StatisticsService {
 
-    private final GutenbergClient gutembergClient;
+    private final GutendexClient gutembergClient;
     private final DataConverter dataConverter;
     private final BookRepository bookRepository;
 
@@ -40,7 +40,7 @@ public class StatisticsService {
     * Constructor con inyección de dependencias necesarias para operar:
     * cliente HTTP, convertidor de datos JSON y repositorio de libros.
     */
-    public StatisticsService(GutenbergClient gutembergClient,
+    public StatisticsService(GutendexClient gutembergClient,
                              DataConverter dataConverter,
                              BookRepository bookRepository) {
         this.gutembergClient = gutembergClient;
