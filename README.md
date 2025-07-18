@@ -28,14 +28,14 @@
 
 ```bash
 git clone https://github.com/<tu-usuario>/ONE-LiterAlura.git
-cd literalura
+cd ONE-LiterAlura
 mvn clean compile
 ```
 
 Para ejecutar:
 
 ```bash
-mvn exec:java -Dexec.mainClass="com.aluraCourse.literAlura.Principal"
+mvn exec:java -Dexec.mainClass="com.aluraCourse.literAlura.LiterAluraApplication"
 ```
 
 Seguí las instrucciones en la consola para navegar entre las distintas opciones del programa.
