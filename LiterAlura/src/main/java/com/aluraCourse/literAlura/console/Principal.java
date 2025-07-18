@@ -1,29 +1,26 @@
 package com.aluraCourse.literAlura.console;
 
 import com.aluraCourse.literAlura.model.Data;
-import com.aluraCourse.literAlura.model.entities.Book;
 import com.aluraCourse.literAlura.model.DataBook;
-import com.aluraCourse.literAlura.model.entities.Person;
-import com.aluraCourse.literAlura.repository.BookRepository;
-import com.aluraCourse.literAlura.repository.PersonRepository;
 import com.aluraCourse.literAlura.util.DataConverter;
 import com.aluraCourse.literAlura.client.GutenbergClient;
 import com.aluraCourse.literAlura.service.AuthorService;
 import com.aluraCourse.literAlura.service.BookService;
 import com.aluraCourse.literAlura.service.StatisticsService;
-import java.util.Comparator;
-import java.util.DoubleSummaryStatistics;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
- *
- * @author Luciano E. Gatti Flekenstein
- */
+* Clase principal que gestiona la interacción con el usuario a través de un menú en consola.
+* Permite buscar libros, listar libros y autores, obtener estadísticas y consultar información
+* desde una API o base de datos.
+*
+* Utiliza servicios como {@link BookService}, {@link AuthorService}, {@link StatisticsService},
+* {@link GutenbergClient} y {@link DataConverter} para realizar las operaciones.
+*
+* @author Luciano E. Gatti Flekenstein
+*/
+
 public class Principal {
 
     private final BookService bookService;
@@ -46,8 +43,13 @@ public class Principal {
         this.gutembergClient = gutembergClient;
         this.dataConverter = dataConverter;
     }
-
-    public void showMenu() {
+    
+    /**
+    * Muestra el menú principal en consola y gestiona la selección de opciones por parte del usuario.
+    * El menú permite buscar libros, mostrar información, realizar estadísticas y consultar datos
+    * desde la API o la base de datos.
+    */
+    public void mostrarMenu() {
         int opcion = -1;
         while (opcion != 0) {
             System.out.println("""
@@ -121,11 +123,16 @@ public class Principal {
         }
     }
 
+    /**
+    * Permite al usuario buscar un libro ingresando su nombre.
+    * Consulta la API de Gutenberg, convierte la respuesta en un objeto Java,
+    * filtra el libro que coincida con el título ingresado y lo guarda utilizando el BookService.
+    */
     private void buscarLibro() {
         System.out.println("Escribe el nombre del libro que deseas buscar:");
         String bookName = scanner.nextLine();
 
-        String json = gutembergClient.getData(URL_BASE + "?search=" + bookName.replace(" ", "+"));
+        String json = gutembergClient.obtenerDatos(URL_BASE + "?search=" + bookName.replace(" ", "+"));
 
         if (json == null || json.isBlank()) {
             System.out.println("Error: La respuesta de la API está vacía.");
@@ -147,6 +154,12 @@ public class Principal {
         esperarEnter();
     }
 
+    /**
+    * Solicita al usuario que ingrese un año y devuelve el valor ingresado.
+    * Si el valor ingresado no es un número válido, retorna 1900 por defecto.
+    *
+    * @return el año ingresado por el usuario, o 1900 si hay un error de formato.
+    */
     private int leerAnio() {
         System.out.println("Ingrese el año:");
         try {
@@ -157,6 +170,10 @@ public class Principal {
         }
     }
 
+    /**
+    * Pausa la ejecución hasta que el usuario presione la tecla ENTER.
+    * Se utiliza para mejorar la interacción en consola entre una acción y el siguiente paso.
+    */
     private void esperarEnter() {
         System.out.println("\nPresione ENTER para continuar...");
         scanner.nextLine();
