@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.aluraCourse.literAlura.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -28,11 +24,22 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DataConverter implements IDataConverter{
-    private ObjectMapper mapper = new ObjectMapper();
+// Objeto encargado de mapear JSON a objetos Java.
+private ObjectMapper mapper = new ObjectMapper();
+
+    /**
+    * Convierte una cadena JSON en una instancia de la clase especificada.
+    *
+    * @param json  la cadena JSON que representa el objeto a convertir.
+    * @param clase la clase a la que se desea mapear el JSON.
+    * @param <T>   el tipo de objeto que se desea obtener tras la conversión.
+    * @return una instancia del tipo T con los datos mapeados desde el JSON.
+    * @throws RuntimeException si ocurre un error al procesar el JSON (por ejemplo, si está mal formado o no es compatible con la clase dada).
+    */
     @Override
     public <T> T convertJsonToObject(String json, Class<T> clase) {
         try {
-            return mapper.readValue(json.toString(), clase);
+            return mapper.readValue(json, clase);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
