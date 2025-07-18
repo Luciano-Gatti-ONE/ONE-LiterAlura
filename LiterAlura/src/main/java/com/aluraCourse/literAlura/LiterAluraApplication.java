@@ -37,6 +37,6 @@ public class LiterAluraApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        new Principal(bookService, authorService, statisticsService, gutembergClient, dataConverter).showMenu();
+        new Principal(bookService, authorService, statisticsService, gutembergClient, dataConverter).mostrarMenu();
     }
 }
