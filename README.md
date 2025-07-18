@@ -27,7 +27,7 @@
 ## ⚙️ Instalación y Uso
 
 ```bash
-git clone https://github.com/<tu-usuario>/literalura.git
+git clone https://github.com/<tu-usuario>/ONE-LiterAlura.git
 cd literalura
 mvn clean compile
 ```
