@@ -1,6 +1,6 @@
 package com.aluraCourse.literAlura.service;
 
-import com.aluraCourse.literAlura.client.GutenbergClient;
+import com.aluraCourse.literAlura.client.GutendexClient;
 import com.aluraCourse.literAlura.model.Data;
 import com.aluraCourse.literAlura.model.entities.Author;
 import com.aluraCourse.literAlura.util.DataConverter;
@@ -24,7 +24,7 @@ import com.aluraCourse.literAlura.repository.AuthorRepository;
 public class AuthorService {
 
     private final AuthorRepository personRepository;
-    private final GutenbergClient gutembergClient;
+    private final GutendexClient gutembergClient;
     private final DataConverter dataConverter;
     private static final String URL_BASE = "https://gutendex.com/books/";
 
@@ -36,7 +36,7 @@ public class AuthorService {
     * @param dataConverter utilidad para convertir JSON en objetos Java.
     */
     public AuthorService(AuthorRepository personRepository,
-                         GutenbergClient gutembergClient,
+                         GutendexClient gutembergClient,
                          DataConverter dataConverter) {
         this.personRepository = personRepository;
         this.gutembergClient = gutembergClient;
