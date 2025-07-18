@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Record.java to edit this template
- */
 package com.aluraCourse.literAlura.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
@@ -21,7 +17,7 @@ import java.util.List;
  * Se utiliza @JsonIgnoreProperties(ignoreUnknown = true) para ignorar cualquier otra propiedad
  * del JSON que no esté explícitamente mapeada, brindando flexibilidad frente a cambios en la API.
  *
- * @author usuario
+ * @author Luciano E. Gatti Flekenstein
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
